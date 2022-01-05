@@ -1,0 +1,78 @@
+.comments {
+  margin-bottom: $mb-2;
+  box-shadow: none;
+  position: relative;
+  &__container {
+    background-color: $c-white;
+    padding: $mb-2;
+    border-radius: $mb-1;
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: $mb-2;
+      margin-bottom: $mb-2;
+      img {
+        width: 35px;
+      }
+    }
+
+    &-content {
+      margin: $mb-2 0;
+    }
+
+    &-score {
+      width: 50px;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    &-reply {
+      display: inline-block;
+      position: absolute;
+      right: 1rem;
+    }
+  }
+
+  &__replies {
+    background-color: $c-very-light-gray;
+    box-shadow: -6px 1px 3px -5px $c-light-gray;
+    &-container {
+      margin: $mb-2 0 $mb-2 $mb-2;
+      background-color: $c-white;
+      padding: $mb-2;
+      border-radius: $mb-1;
+    }
+  }
+  &__new-commnet {
+    background-color: $c-white;
+    padding: $mb-2;
+    border-radius: $mb-1;
+    display: flex;
+    flex-wrap: wrap;
+    &-new-text {
+      width: 100%;
+      height: 100px;
+      padding: $mb-1 $mb-2;
+      border-radius: inherit;
+      border: 1px solid $c-light-gray;
+      margin-bottom: $mb-1;
+      order: 1;
+    }
+    img {
+      width: 35px;
+      order: 2;
+    }
+    &-send {
+      order: 3;
+      padding: 0.8rem $mb-3;
+      border: none;
+      border-radius: $mb-1;
+      background-color: $c-moderate-blue;
+      color: $c-white;
+    }
+  }
+}

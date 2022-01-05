@@ -1,0 +1,37 @@
+/*=== COLORS ===*/
+/*== PRIMARY ==*/
+$c-moderate-blue: hsl(238, 40%, 52%);
+$c-soft-red: hsl(358, 79%, 66%);
+$c-ligth-grayish: hsl(239, 57%, 85%);
+$c-pale-red: hsl(357, 100%, 86%);
+
+/*== NEUTRAL ==*/
+$c-dark-blue: hsl(212, 24%, 26%);
+$c-grayish-blue: hsl(211, 10%, 45%);
+$c-light-gray: hsl(223, 19%, 93%);
+$c-very-light-gray: hsl(228, 33%, 97%);
+$c-white: hsl(0, 0%, 100%);
+
+$font-family: "Rubik", sans-serif;
+
+$font-weights: (
+  "normal": 400,
+  "medium": 500,
+  "bold": 700,
+);
+
+@function fontWeight($name) {
+  @return map-get($font-weights, $name);
+}
+
+/*=== DEVICE ==*/
+$mq-m: 375px; //mobile
+$mq-d: 1440px; //desktop
+
+/*=== MARGINS ===*/
+$mb-1: 0.5rem;
+$mb-2: 1rem;
+$mb-3: 1.5rem;
+$mb-4: 2rem;
+$mb-5: 2.5rem;
+$mb-6: 3rem;
