@@ -6,34 +6,99 @@
     background-color: $c-white;
     padding: $mb-2;
     border-radius: $mb-1;
-
-    &__header {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      gap: $mb-2;
-      margin-bottom: $mb-2;
-      img {
-        width: 35px;
+    &-post {
+      &-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: $mb-2;
+        margin-bottom: $mb-2;
+        img {
+          width: 35px;
+        }
+        &-username {
+          font-weight: fontWeight(bold);
+        }
+      }
+      &-message {
+        margin: $mb-2 0;
+        .replyingTo {
+          font-weight: fontWeight(bold);
+          color: $c-moderate-blue;
+        }
       }
     }
 
-    &-content {
-      margin: $mb-2 0;
-    }
-
     &-score {
-      width: 50px;
       display: inline-flex;
       flex-direction: row;
-      align-items: stretch;
+      align-items: center;
+      background-color: $c-very-light-gray;
+      border-radius: $mb-1;
+      &-number {
+        color: $c-moderate-blue;
+        font-weight: fontWeight(bold);
+      }
+      &-btn {
+        border: none;
+        padding: 0.4rem 0.8rem;
+        background-color: $c-very-light-gray;
+        color: $c-ligth-grayish;
+        font-weight: fontWeight(bold);
+        cursor: pointer;
+        &:first-of-type {
+          border-radius: $mb-1 0 0 $mb-1;
+        }
+        &:last-child {
+          border-radius: 0 $mb-1 $mb-1 0;
+        }
+      }
     }
-
     &-reply {
-      display: inline-block;
+      display: inline-flex;
       position: absolute;
-      right: 1rem;
+      right: $mb-2;
+      gap: $mb-1;
+      align-items: center;
+      &-btn {
+        border: none;
+        background-color: $c-white;
+        color: $c-moderate-blue;
+        font-weight: fontWeight(bold);
+      }
+    }
+    &-userAction {
+      display: inline-flex;
+      position: absolute;
+      right: $mb-2;
+      align-items: center;
+      gap: $mb-1;
+      &-delete {
+        display: inline-flex;
+        margin-right: $mb-1;
+        gap: $mb-1;
+        align-items: center;
+        &-btn {
+          background-color: $c-white;
+          color: $c-soft-red;
+          border: none;
+          font-weight: fontWeight(bold);
+          cursor: pointer;
+        }
+      }
+      &-edit {
+        display: inline-flex;
+        gap: $mb-1;
+        align-items: center;
+        &-btn {
+          background-color: $c-white;
+          color: $c-moderate-blue;
+          border: none;
+          font-weight: fontWeight(bold);
+          cursor: pointer;
+        }
+      }
     }
   }
 
@@ -53,6 +118,7 @@
     border-radius: $mb-1;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     &-new-text {
       width: 100%;
       height: 100px;
@@ -74,5 +140,11 @@
       background-color: $c-moderate-blue;
       color: $c-white;
     }
+  }
+
+  &__you {
+    background-color: $c-moderate-blue;
+    color: $c-white;
+    padding: 1px 0.3rem;
   }
 }

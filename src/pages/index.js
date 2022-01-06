@@ -1,103 +1,145 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Image from "next/image";
+import Modal from "../components/Modal";
 
 export default function Home() {
+  let collection = require("../utils/data.json");
+  let comments = collection.comments;
+  let currentUser = collection.currentUser;
+  const [modal, setModal] = useState(false);
+
   return (
     <Fragment>
-      <section className="comments">
-        <div className="comments__container">
-          <div className="comments__container__header">
-            <img
-              className="comments__header-img"
-              src="/images/avatars/image-juliusomo.png"
-              alt=""
-            />
-            <p className="comments__header-username">Username</p>
-            <p className="comments__header-createat">1 month ago</p>
-          </div>
-          <p className="comments__container-content">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur
-            quidem quod, iusto qui error tempora aliquid labore. Necessitatibus,
-            a aspernatur.
-          </p>
-          <div className="comments__container-score">
-            <button className="comments__score-plus">+</button>
-            <p className="comments__score-number">12</p>
-            <button className="comments__score-plus">-</button>
-          </div>
-          <div className="comments__container-reply">
-            <button className="comments__reply-btn">Reply</button>
-          </div>
-        </div>
-      </section>
-      <section className="comments">
-        <div className="comments__container">
-          <div className="comments__container__header">
-            <img
-              className="comments__header-img"
-              src="/images/avatars/image-juliusomo.png"
-              alt=""
-            />
-            <p className="comments__header-username">Username</p>
-            <p className="comments__header-createat">1 month ago</p>
-          </div>
-          <p className="comments__container-content">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur
-            quidem quod, iusto qui error tempora aliquid labore. Necessitatibus,
-            a aspernatur.
-          </p>
-          <div className="comments__container-score">
-            <button className="comments__score-plus">+</button>
-            <p className="comments__score-number">12</p>
-            <button className="comments__score-plus">-</button>
-          </div>
-          <div className="comments__container-reply">
-            <button className="comments__reply-btn">Reply</button>
-          </div>
-        </div>
-        <section className="comments__replies">
-          <div className="comments__replies-container">
-            <div className="comments__container-header">
-              <img src="/images/avatars/image-juliusomo.png" alt="" />
-              <p className="comments__header-username">Username</p>
-              <p className="comments__header-createat">1 month</p>
+      {comments.map((item, index) => {
+        return (
+          <section key={index} className="comments">
+            <div className="comments__container">
+              <div className="comments__container-post">
+                <div className="comments__container-post-header">
+                  <img
+                    className="comments__container-post-header-img"
+                    src={item.user.image.png}
+                    alt=""
+                  />
+                  <p className="comments__container-post-header-username">
+                    {item.user.username}
+                  </p>
+                  {item.user.username === currentUser.id && (
+                    <span className="comments__you">you</span>
+                  )}
+                  <p className="comments__container-post-header-createat">
+                    {item.createdAt}
+                  </p>
+                </div>
+                <p className="comments__container-post-message">
+                  {item.content}
+                </p>
+              </div>
+              <div className="comments__container-score">
+                <button className="comments__container-score-btn">+</button>
+                <p className="comments__container-score-number">{item.score}</p>
+                <button className="comments__container-score-btn">-</button>
+              </div>
+              <div className="comments__container-reply">
+                <Image
+                  className="comments__container-reply-svg"
+                  src="/images/icon-reply.svg"
+                  height={13}
+                  width={13}
+                />
+                <button className="comments__container-reply-btn">Reply</button>
+              </div>
             </div>
-            <p className="comments__container-content">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Aspernatur quidem quod, iusto qui error tempora aliquid labore.
-              Necessitatibus, a aspernatur.
-            </p>
-            <div className="comments__container-score">
-              <button className="comments__score-plus">+</button>
-              <p className="comments__score-number">12</p>
-              <button className="comments__score-plus">-</button>
-            </div>
-            <div className="comments__container-reply">
-              <button className="comments__reply-btn">Reply</button>
-            </div>
-          </div>
-          <div className="comments__replies-container">
-            <div className="comments__container-header">
-              <img src="/images/avatars/image-juliusomo.png" alt="" />
-              <p className="comments__header-username">Username</p>
-              <p className="comments__header-createat">1 month</p>
-            </div>
-            <p className="comments__container-content">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Aspernatur quidem quod, iusto qui error tempora aliquid labore.
-              Necessitatibus, a aspernatur.
-            </p>
-            <div className="comments__container-score">
-              <button className="comments__score-plus">+</button>
-              <p className="comments__score-number">12</p>
-              <button className="comments__score-plus">-</button>
-            </div>
-            <div className="comments__container-reply">
-              <button className="comments__reply-btn">Reply</button>
-            </div>
-          </div>
-        </section>
-      </section>
+            {item.replies.length > 0 && (
+              <section className="comments__replies">
+                {item.replies.map((data, key) => {
+                  return (
+                    <div key={key} className="comments__replies-container">
+                      <div className="comments__container-post">
+                        <div className="comments__container-post-header">
+                          <img
+                            className="comments__container-post-header-img"
+                            src={data.user.image.png}
+                            alt=""
+                          />
+                          <p className="comments__container-post-header-username">
+                            {data.user.username}
+                          </p>
+                          {data.user.username === currentUser.username && (
+                            <span className="comments__you">you</span>
+                          )}
+
+                          <p className="comments__container-post-header-createat">
+                            {data.createdAt}
+                          </p>
+                        </div>
+                        <p className="comments__container-post-message">
+                          <span className="comments__container-post-message replyingTo">
+                            @{data.replyingTo}{" "}
+                          </span>
+                          {data.content}
+                        </p>
+                      </div>
+                      <div className="comments__container-score">
+                        <button className="comments__container-score-btn">
+                          +
+                        </button>
+                        <p className="comments__container-score-number">
+                          {data.score}
+                        </p>
+                        <button className="comments__container-score-btn">
+                          -
+                        </button>
+                      </div>
+                      {data.user.username === currentUser.username ? (
+                        <div className="comments__container-userAction">
+                          <div className="comments__container-userAction-delete">
+                            <Image
+                              className="comments__container-userAction-delete-svg"
+                              src="/images/icon-delete.svg"
+                              height={13}
+                              width={13}
+                            />
+                            <span
+                              className="comments__container-userAction-delete-btn"
+                              onClick={() => setModal(true)}
+                            >
+                              Delete
+                            </span>
+                          </div>
+                          <div className="comments__container-userAction-edit">
+                            <Image
+                              className="comments__container-userAction-edit-svg"
+                              src="/images/icon-edit.svg"
+                              height={13}
+                              width={13}
+                            />
+                            <span className="comments__container-userAction-edit-btn">
+                              Edit
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="comments__container-reply">
+                          <Image
+                            className="comments__container-reply-svg"
+                            src="/images/icon-reply.svg"
+                            height={13}
+                            width={13}
+                          />
+                          <button className="comments__container-reply-btn">
+                            Reply
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </section>
+            )}
+          </section>
+        );
+      })}
 
       <section className="comments__new-commnet">
         <textarea
@@ -108,6 +150,9 @@ export default function Home() {
         <img src="/images/avatars/image-juliusomo.png" alt="" />
         <button className="comments__new-commnet-send">Send</button>
       </section>
+
+      {/* MODAL */}
+      {modal && <Modal setModal={setModal} state={modal} />}
     </Fragment>
   );
 }
