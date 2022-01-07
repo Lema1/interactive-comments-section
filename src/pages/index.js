@@ -16,10 +16,11 @@ export default function Home() {
             <div className="comments__container">
               <div className="comments__container-post">
                 <div className="comments__container-post-header">
-                  <img
+                  <Image
                     className="comments__container-post-header-img"
                     src={item.user.image.png}
-                    alt=""
+                    height={30}
+                    width={30}
                   />
                   <p className="comments__container-post-header-username">
                     {item.user.username}
@@ -57,10 +58,11 @@ export default function Home() {
                     <div key={key} className="comments__replies-container">
                       <div className="comments__container-post">
                         <div className="comments__container-post-header">
-                          <img
+                          <Image
                             className="comments__container-post-header-img"
                             src={data.user.image.png}
-                            alt=""
+                            height={30}
+                            width={30}
                           />
                           <p className="comments__container-post-header-username">
                             {data.user.username}
@@ -93,17 +95,17 @@ export default function Home() {
                       </div>
                       {data.user.username === currentUser.username ? (
                         <div className="comments__container-userAction">
-                          <div className="comments__container-userAction-delete">
+                          <div
+                            className="comments__container-userAction-delete"
+                            onClick={() => setModal(true)}
+                          >
                             <Image
                               className="comments__container-userAction-delete-svg"
                               src="/images/icon-delete.svg"
                               height={13}
                               width={13}
                             />
-                            <span
-                              className="comments__container-userAction-delete-btn"
-                              onClick={() => setModal(true)}
-                            >
+                            <span className="comments__container-userAction-delete-btn">
                               Delete
                             </span>
                           </div>
@@ -147,7 +149,13 @@ export default function Home() {
           name="textarea"
           placeholder="Add a comment..."
         ></textarea>
-        <img src="/images/avatars/image-juliusomo.png" alt="" />
+        <div className="comments__new-commnet-new-img">
+          <Image
+            src="/images/avatars/image-juliusomo.png"
+            height={30}
+            width={30}
+          />
+        </div>
         <button className="comments__new-commnet-send">Send</button>
       </section>
 

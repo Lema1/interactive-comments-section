@@ -20,9 +20,16 @@
         &-username {
           font-weight: fontWeight(bold);
         }
+        &-createat {
+          font-weight: fontWeight(medium);
+          color: $c-grayish-blue;
+        }
       }
       &-message {
         margin: $mb-2 0;
+        color: $c-grayish-blue;
+        font-weight: fontWeight(medium);
+
         .replyingTo {
           font-weight: fontWeight(bold);
           color: $c-moderate-blue;
@@ -79,24 +86,24 @@
         margin-right: $mb-1;
         gap: $mb-1;
         align-items: center;
+        cursor: pointer;
         &-btn {
           background-color: $c-white;
           color: $c-soft-red;
           border: none;
           font-weight: fontWeight(bold);
-          cursor: pointer;
         }
       }
       &-edit {
         display: inline-flex;
         gap: $mb-1;
         align-items: center;
+        cursor: pointer;
         &-btn {
           background-color: $c-white;
           color: $c-moderate-blue;
           border: none;
           font-weight: fontWeight(bold);
-          cursor: pointer;
         }
       }
     }
@@ -112,6 +119,7 @@
       border-radius: $mb-1;
     }
   }
+
   &__new-commnet {
     background-color: $c-white;
     padding: $mb-2;
@@ -119,19 +127,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    &-new-text {
-      width: 100%;
-      height: 100px;
-      padding: $mb-1 $mb-2;
-      border-radius: inherit;
-      border: 1px solid $c-light-gray;
-      margin-bottom: $mb-1;
-      order: 1;
+    &-new {
+      &-text {
+        width: 100%;
+        height: 100px;
+        padding: $mb-1 $mb-2;
+        border-radius: inherit;
+        border: 1px solid $c-light-gray;
+        margin-bottom: $mb-2;
+        order: 1;
+      }
+      &-img {
+        width: 35px;
+        order: 2;
+      }
     }
-    img {
-      width: 35px;
-      order: 2;
-    }
+
     &-send {
       order: 3;
       padding: 0.8rem $mb-3;
