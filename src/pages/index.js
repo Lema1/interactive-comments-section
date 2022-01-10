@@ -51,6 +51,7 @@ export default function Home() {
                 <button className="comments__container-reply-btn">Reply</button>
               </div>
             </div>
+            {/* VALIDACION Y CARGA DE RESPUESTAS */}
             {item.replies.length > 0 && (
               <section className="comments__replies">
                 {item.replies.map((data, key) => {
@@ -142,7 +143,7 @@ export default function Home() {
           </section>
         );
       })}
-
+      {/* NUEVO COMENTARIO */}
       <section className="comments__new-commnet">
         <textarea
           className="comments__new-commnet-new-text"
@@ -152,8 +153,8 @@ export default function Home() {
         <div className="comments__new-commnet-new-img">
           <Image
             src="/images/avatars/image-juliusomo.png"
-            height={30}
-            width={30}
+            height={40}
+            width={40}
           />
         </div>
         <button className="comments__new-commnet-send">Send</button>
