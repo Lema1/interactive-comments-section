@@ -50,3 +50,29 @@
     }
   }
 }
+
+@media (min-width: $mq-d) {
+  .modal {
+    &__overlay {
+    }
+
+    &__container {
+      width: 30%;
+    }
+
+    &__header {
+    }
+
+    &__content {
+    }
+
+    &__btn {
+      button {
+      }
+      &-no {
+      }
+      &-yes {
+      }
+    }
+  }
+}
